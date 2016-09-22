@@ -35,18 +35,18 @@
       <input type="text" ng-model="itemAdder.itemQuantity" placeholder="Quantity">
       <button ng-click="itemAdder.addItem();">Add Item</button>
      <ul>
-       <li ng-repeat="item in itemsToBuy">Buy {{item.itemQuantity}} {{ item.itemName }} <button class="btn btn-default" ng-click="itemAdder.buyItem($index,item.itemName,item.itemQuantity);"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+       <li ng-repeat="item in itemAdder.itemsToBuy">Buy {{item.quantity}} {{ item.name }} <button class="btn btn-default" ng-click="itemAdder.buyItem($index,item.name,item.quantity);"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
      </ul>
-     <div class="emptyMessage" ng-if="!itemsToBuy">Everything is bought!</div>
+     <div class="emptyMessage" ng-if="itemAdder.numItemsToBuy===0">Everything is bought!</div>
     </div>
 
     <!-- Already Bought List -->
     <div class="col-md-6" ng-controller="AlreadyBoughtShoppingController as itemBuyer">
      <h2>Already Bought:</h2>
      <ul>
-       <li ng-repeat="item in itemsBought">Bought {{ item.itemQuantity}} {{item.itemName}} </li>
+       <li ng-repeat="item in itemBuyer.itemsBought">Bought {{ item.quantity}} {{item.name}} </li>
      </ul>
-     <div class="emptyMessage" ng-if="!itemsBought">Nothing bought yet.</div>
+     <div class="emptyMessage" ng-if="itemBuyer.numItemsBought===0">Nothing bought yet.</div>
     </div>
   </div>
 </div>
