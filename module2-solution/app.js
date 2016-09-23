@@ -11,8 +11,6 @@ function AlreadyBoughtShoppingController(ShoppingListCheckOffService){
   var itemBuyer = this;
 
   itemBuyer.itemsBought = ShoppingListCheckOffService.getItemsBought();
-  itemBuyer.numItemsBought = itemBuyer.itemsBought.length;
-
 }
 
 ToBuyShoppingController.$inject = ['ShoppingListCheckOffService'];
@@ -20,31 +18,35 @@ function ToBuyShoppingController(ShoppingListCheckOffService){
   var itemAdder = this;
 
   itemAdder.itemsToBuy = ShoppingListCheckOffService.getItemsToBuy();
-  itemAdder.numItemsToBuy = itemAdder.itemsToBuy.length;
 
   itemAdder.itemName = "";
   itemAdder.itemQuantity = "";
 
   itemAdder.addItem = function(){
     ShoppingListCheckOffService.addItem(itemAdder.itemName, itemAdder.itemQuantity);
+    //Clear out the form so other items can be added
+    itemAdder.itemName = ""; itemAdder.itemQuantity = "";
   }
 
   itemAdder.buyItem = function(itemIndex,itemName, itemQuantity){
     ShoppingListCheckOffService.buyItem(itemIndex, itemName, itemQuantity);
   }
-
 }
 
 function ShoppingListCheckOffService() {
   var service = this;
 
   // List of to buy items
-  var toBuy = [];
+  var toBuy = [{ name: "Cookies", quantity: 10 },
+                { name: "Sugary drinks", quantity: 20 },
+                { name: "Pepto Bismol", quantity: 30 },
+                { name: "Butter", quantity: 5 },
+                { name: "Milk", quantity: 15 }
+              ];
   // List of bought items
   var bought = [];
 
   service.addItem = function (itemName, quantity) {
-    console.log('what', itemName, quantity);
     var buy = {
       name: itemName,
       quantity: quantity
