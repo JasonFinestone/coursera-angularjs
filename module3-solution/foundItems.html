@@ -1,0 +1,11 @@
+<div class="container" ng-if="list.items">
+
+  <table class="table table-striped table-bordered table-condensed" >
+    <tr><th colspan="4"><h3>{{list.title}}</h3></th></tr>
+    <tr><th>Name</th><th>Short Name</th><th>Description</th><th>Remove Button</th></tr>
+    <tr ng-repeat="item in list.items">
+      <td>{{ item.name }}</td><td>{{ item.short_name }}</td><td>{{item.description}}</td>
+      <td><button ng-click="list.onRemove({index: $index});">Remove Item</button></td>
+    </tr>
+  </table>
+</div>
