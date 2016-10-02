@@ -1,4 +1,4 @@
-<div class="container" ng-if="list.items">
+<div class="container" ng-if="list.items.length > 0">
 
   <table class="table table-striped table-bordered table-condensed" >
     <tr><th colspan="4"><h3>{{list.title}}</h3></th></tr>
@@ -8,4 +8,10 @@
       <td><button ng-click="list.onRemove({index: $index});">Don't want this one!</button></td>
     </tr>
   </table>
+</div>
+<div class="container" ng-if="list.items.length < 1">
+</br></br>
+  <div class="alert alert-warning">
+    <strong>Warning!</strong> Nothing found.
+  </div>
 </div>
