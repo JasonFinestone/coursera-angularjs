@@ -6,9 +6,22 @@
     <title>Menu Application</title>
   </head>
   <body>
-    <h1>Welcome to our Restaurant</h1>
-
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#/">Davids Restaurant</a>
+          </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container-fluid">
+    <div class="row">
+      <loading-spinner></loading-spinner>
       <ui-view></ui-view>
+    </div>
+  </div>
 
     <!-- Libraries -->
     <script src="lib/jquery-3.1.0.min.js"></script>
@@ -19,6 +32,7 @@
 
     <script src="src/menuapp/menuapp.module.js"></script>
     <script src="src/menudata/menudata.module.js"></script>
+    <script src="src/spinner/spinner.module.js"></script>
 
     <!-- Routes -->
 
@@ -33,6 +47,11 @@
 
     <!-- 'MenuData' module artifacts -->
     <script src="src/menudata/menudata.service.js"></script>
+
+    <!-- 'Spinner' module artifacts -->
+    <script src="src/spinner/loadingspinner.component.js"></script>
+    <script src="src/spinner/spinner.controller.js"></script>
+
 
   </body>
 </html>

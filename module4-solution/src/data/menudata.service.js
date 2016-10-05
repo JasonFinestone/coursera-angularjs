@@ -5,7 +5,7 @@ angular.module('MenuData')
 .service('MenuDataService', MenuDataService)
 .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
 
-MenuDataService.$inject = ['$q', '$http', 'ApiBasePath']
+MenuDataService.$inject = ['$http', 'ApiBasePath']
 function MenuDataService($q, $http, ApiBasePath) {
   var service = this;
 
@@ -14,7 +14,7 @@ function MenuDataService($q, $http, ApiBasePath) {
       method: "GET",
       url: (ApiBasePath + "/categories.json")
     }).then(function successCallBack(response) {
-      var categories = response.data;
+      var categories = response.data.categories;
       return categories;
 
     },function errorCallback(response){
@@ -30,7 +30,6 @@ function MenuDataService($q, $http, ApiBasePath) {
         category: categoryId
       }
      }).then(function successCallBack(response) {
-       //console.log(response);
        var menu_items = response.data.menu_items;
        return menu_items;
 

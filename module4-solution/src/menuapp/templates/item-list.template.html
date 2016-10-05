@@ -1,6 +1,9 @@
-<a ui-sref="home">Home</a> &lt;
-<a ui-sref="categoryList">Category List</a> &lt;
-
+<ol class="breadcrumb">
+  <li><a ui-sref="home">Home</a></li>
+  <li><a ui-sref="categoryList">Category List</a></li>
+  <!-- <li><a ui-sref="itemList({categoryId: category.short_name})">Item List {{short_name}}</a></li>-->
+</ol>
+<h1>These are our items in your chosen Category!</h1>
 <table>
   <tr ng-repeat="item in itemList.items">
    <td>{{item.name}}</td>
