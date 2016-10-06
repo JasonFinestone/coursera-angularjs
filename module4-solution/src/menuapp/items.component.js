@@ -6,7 +6,7 @@ angular.module('MenuApp')
   templateUrl: 'src/menuapp/categories.template.html',
   bindings: {
     items: '<',
-    category: '@'
+    category_id: '@'
   }
 });
 
