@@ -8,6 +8,8 @@ angular.module('MenuData')
 MenuDataService.$inject = ['$q', '$http', 'ApiBasePath']
 function MenuDataService($q, $http, ApiBasePath) {
   var service = this;
+  service.categories = {};
+  //service.chosenCategory = "";
 
   service.getAllCategories = function(){
     return $http({
@@ -15,6 +17,7 @@ function MenuDataService($q, $http, ApiBasePath) {
       url: (ApiBasePath + "/categories.json")
     }).then(function successCallBack(response) {
       var categories = response.data;
+      service.categories = categories;
       return categories;
 
     },function errorCallback(response){
@@ -32,8 +35,10 @@ function MenuDataService($q, $http, ApiBasePath) {
      }).then(function successCallBack(response) {
        //console.log(response);
        var menu_items = response.data.menu_items;
+       var chosenCategory = response.data.category;
        return { 'menu_items' : menu_items,
-               'category_id': categoryId
+               'category_id': categoryId,
+               'category_name': chosenCategory.name
               };
 
      },function errorCallback(response){

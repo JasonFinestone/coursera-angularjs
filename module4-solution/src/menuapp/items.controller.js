@@ -11,6 +11,7 @@ function ItemListController(items) {
   // I bolted on the chosen category to the service return data so that I can use it in the items template
   itemList.items = items.menu_items;
   itemList.category_id = items.category_id;
+  itemList.category_name = items.category_name;
 }
 
 })();

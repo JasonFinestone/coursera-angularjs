@@ -1,11 +1,28 @@
+<div ng-if="itemList.items">
+<h3 class="alert alert-info">These are our menu items. <small>{{itemList.category_name}}.</small></h3>
 <ol class="breadcrumb">
   <li><a ui-sref="home">Home</a></li>
   <li><a ui-sref="categoryList">Category List</a></li>
-  <li><a ui-sref="itemList({categoryId: itemList.category_id})">Item List {{itemList.category_id}}</a></li>
+  <li><a ui-sref="itemList({categoryId: itemList.category_id})">{{itemList.category_name}}</a></li>
 </ol>
-<h1>These are our items in your chosen Category!</h1>
-<table>
+<div class="container-fluid">
+<table class="table table-hover table-bordered  table-condensed">
+<thead>
+  <tr ><th colspan="4" style="text-align: center;">{{itemList.category_name}}</th></tr>
+
+  <tr class="danger">
+    <th>      Name    </th><th>      Description    </th><th>      Price (Small)    </th><th>      Price (Large)    </th>
+  </tr>
+</thead>
   <tr ng-repeat="item in itemList.items">
-   <td>{{item.name}}</td>
+
+   <td>{{item.name}}</td><td>
+     {{item.description}}
+   </td><td>
+     {{item.price_small}}
+   </td><td>
+     {{item.price_large}}
+   </td>
   </tr>
 </table>
+</div>

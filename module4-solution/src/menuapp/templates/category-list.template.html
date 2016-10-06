@@ -1,9 +1,18 @@
+<div ng-if="categoryList.categories">
+<h3 class="alert alert-info">These are our menu categories. <small>Click a category to see it's available menu items.</small></h3>
 <ol class="breadcrumb">
   <li><a ui-sref="home">Home</a></li>
   <li><a ui-sref="categoryList">Category List</a></li>
 </ol>
-<h1>These are our Categories. Click to see Menu Items!</h1>
-<!-- <a ui-sref="categoryList">Category List</a> &lt;-->
+<div class="container-fluid">
 <ol class="dl-horizontal">
-  <li ng-repeat="category in categoryList.categories | orderBy: 'name'"><a ui-sref="itemList({categoryId: category.short_name})">{{category.name}} <ul ng-if="category.special_instructions"><li>{{category.special_instructions}}</li></ul></li>
+  <li ng-repeat="category in categoryList.categories | orderBy: 'name'">
+    <a ui-sref="itemList({categoryId: category.short_name})">{{category.name}}</a>
+    <ul ng-if="category.special_instructions">
+      <li>
+        <small><em>{{category.special_instructions}}</em></small>
+      </li>
+    </ul>
+  </li>
 </ol>
+</div>
