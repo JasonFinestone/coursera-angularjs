@@ -32,7 +32,7 @@ function MenuDataService($q, $http, ApiBasePath) {
      }).then(function successCallBack(response) {
        //console.log(response);
        var menu_items = response.data.menu_items;
-       return { 'menu_items' :menu_items,
+       return { 'menu_items' : menu_items,
                'category_id': categoryId
               };
 
