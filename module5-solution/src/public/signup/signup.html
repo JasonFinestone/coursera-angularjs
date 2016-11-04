@@ -1,0 +1,89 @@
+<div class="container">
+
+    <h2>Sign up for the newsletter that will never come!</h2>
+    <form name='regForm' novalidate >
+      <div class="form-group">
+        <label for="inputFirstname">First name</label>
+        <input id="inputFirstname" type="text" name="firstname" placeholder="Enter first name"
+          ng-model="signUpCtrlr.user.firstname"
+          required
+          minlength="2"
+          ng-maxlength="20"
+          class="form-control">
+          <span
+            ng-if="(regForm.firstname.$error.minlength || regForm.firstname.$error.required) && regForm.firstname.$touched">
+            First name must be at least 2 characters long
+          </span>
+          <span ng-if="regForm.firstname.$error.maxlength && regForm.first.$touched">
+            First name must not be longer than 20 characters
+          </span>
+      </div>
+      <div class="form-group">
+        <label for="inputLastname">Last name</label>
+        <input id="inputLastname" type="text" name="lastname" placeholder="Enter last name"
+          ng-model="signUpCtrlr.user.lastname"
+          required
+          minlength="2"
+          ng-maxlength="20"
+          class="form-control">
+          <span
+            ng-if="(regForm.lastname.$error.minlength || regForm.lastname.$error.required) && regForm.lastname.$touched">
+            Last name must be at least 2 characters long
+          </span>
+          <span ng-if="regForm.lastname.$error.maxlength && regForm.lastname.$touched">
+            Last name must not be longer than 20 characters
+          </span>
+      </div>
+      <div class="form-group">
+        <label for="inputEmail">Email address</label>
+        <input id="inputEmail" type="email" name="email" placeholder="Email"
+          ng-model="signUpCtrlr.user.email"
+          required
+          class="form-control">
+          <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+            Must be a valid email address: handle@domain format
+          </span>
+      </div>
+      <div class="form-group">
+        <label for="inputPhone">Phone number</label>
+          <input id="inputPhone" type="text" name="phone" placeholder="Phone ###-###-####"
+                ng-model="signUpCtrlr.user.phone"
+                pattern="(\d{3})-(\d{3})-(\d{4})"
+                required
+                class="form-control">
+                <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+                  Phone must be in the format ###-###-####.
+                </span>
+      </div>
+      <div class="form-group">
+        <label for="inputFavourite">Favourite dish</label>
+        <input id="inputFavourite" type="text" name="favourite" placeholder="Favourite dish"
+              ng-model="signUpCtrlr.user.favourite"
+              required
+              minlength="2"
+              ng-maxlength="4"
+              class="form-control">
+              <span
+                ng-if="(regForm.favourite.$error.minlength || regForm.favourite.$error.required) && regForm.favourite.$touched">
+                Favourite dish must be at least 2 characters long based on menu items displayed below. Use the number inside the green box.
+              </span>
+              <span ng-if="regForm.favourite.$error.maxlength && regForm.favourite.$touched">
+                Favourite dish must not be longer than 4 characters based on menu items displayed below. Use the number inside the green box.
+              </span>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-default"
+        ng-disabled="regForm.$invalid"
+        ng-click="signUpCtrlr.submit(signUpCtrlr.user)">Submit
+      </button>
+      <span ng-if="signUpCtrlr.message">
+        {{signUpCtrlr.message}}
+      </span>
+   </form>
+   <br>
+  <div class="container" style="height:180px;overflow:auto;">
+  <favourite-item ng-repeat="favouriteItem in signUpCtrlr.favouriteItems.menu_items"
+   favourite-item="favouriteItem"></favourite-item>
+ </div>
+</div>

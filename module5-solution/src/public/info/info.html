@@ -1,0 +1,42 @@
+<div class="container" ng-if="infoCtrl.userInfo">
+
+  <div class="menu-item-tile col-md-9">
+    <div class="row">
+      <div class="col-sm-8">
+        <address>
+          <h2>Registered user details</h2>
+          Name: <strong>{{infoCtrl.userInfo.firstname}} {{infoCtrl.userInfo.lastname}}</strong><br>
+          Email: <a href="mailto:#">{{infoCtrl.userInfo.email}}</a><br>
+          Phone: {{infoCtrl.userInfo.phone}}
+        </address>
+      </div>
+    </div>
+  </div>
+
+<div class="menu-item-tile col-md-6" >
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="menu-item-photo">
+        <div>{{infoCtrl.userInfo.retrievedFavourite.short_name}}</div>
+        <img class="img-responsive" width="250" height="150" ng-src="{{infoCtrl.basePath}}/images/{{infoCtrl.userInfo.retrievedFavourite.short_name}}.jpg" alt="{{infoCtrl.userInfo.retrievedFavourite.name}}">
+      </div>
+      <div class="menu-item-price">{{infoCtrl.userInfo.retrievedFavourite.price_small | currency}}<span> {{infoCtrl.userInfo.retrievedFavourite.small_portion_name}}</span> {{infoCtrl.userInfo.retrievedFavourite.price_large | currency}} <span>{{$ctrl.userInfo.favouriteItem.large_portion_name}}</span></div>
+    </div>
+    <div class="menu-item-description col-sm-7">
+      <h3 class="menu-item-title">{{infoCtrl.userInfo.retrievedFavourite.name}}</h3>
+      <p class="menu-item-details">{{infoCtrl.userInfo.retrievedFavourite.description}}</p>
+    </div>
+  </div>
+  <hr class="visible-xs">
+</div>
+
+</div>
+
+<div class="container" ng-if="!infoCtrl.userInfo">
+  <div class="menu-item-tile col-md-12" >
+    <div class="row">
+      <div class="col-sm-10">
+          Not signed up for the newsletter yet. <a ui-sref="public.signup">Sign Up here!</a>
+    </div>
+  </div>
+</div>
